@@ -10,7 +10,9 @@ const RequireAuth = ({ children }) => {
   if (!localStorage.getItem("logged")) {
     return <Navigate to="/login" replace={true} />;
   }
+  
   return children;
+
 };
 
 export const App = () => (
@@ -21,7 +23,7 @@ export const App = () => (
     </RequireAuth> } />
 
     <Route path="/login" element={<Login />} />
-    
+
     <Route path="*" element={<Error404 />} />
   </Routes>
 );
