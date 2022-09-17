@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Navigate } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { Login } from "./components/views/Login";
+import { Error404 } from "./components/views/Error404/Error404";
+import { Tasks } from "./components/views/Tasks/Tasks";
 
-export default App;
+import "./App.css";
+
+const RequireAuth = ({ children }) => {
+  if (!localStorage.getItem("logged")) {
+    return <Navigate to="/login" replace={true} />;
+  }
+  return children;
+};
+
+export const App = () => (
+  <Routes>
+    <Route path="/" element={ 
+    <RequireAuth> 
+    <Tasks />
+    </RequireAuth> } />
+
+    <Route path="/login" element={<Login />} />
+    
+    <Route path="*" element={<Error404 />} />
+  </Routes>
+);
