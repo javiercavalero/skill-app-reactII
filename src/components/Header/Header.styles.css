@@ -7,10 +7,21 @@ header{
 
 header > img{
     width: 90px;
+    cursor: pointer;
 }
 
 header > div{
-    cursor: pointer;
+    transition: all 0.3s ease-out;
+  background-color: var( --global-primary-color );
+  border: 1px solid var( --global-primary-color );
+  color:white;
+  padding: 10px !important;
+  cursor: pointer;
+}
+header > div:hover{
+    color: var( --global-primary-color );
+    border: 1px solid var( --global-primary-color );
+    background-color:white;
 }
 
 @media (min-width: 800px) {
