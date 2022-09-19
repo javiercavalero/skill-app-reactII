@@ -13,7 +13,7 @@ export const Header = () => {
   return (
    <header>
     <img src="/img/Go_Scrum.png" alt="Logo Go Scrum" />
-    <div onClick={handleLogout}>Cerrar sesión</div>
+    <div onClick={handleLogout}>Logout</div>
    </header>
   )
 }

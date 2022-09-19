@@ -41,7 +41,7 @@ export const Login = () => {
   return (
     <div className='auth'>
       <form onSubmit= {handleSubmit}>
-        <h1>Iniciar sesión</h1>
+        <h1>Login</h1>
         <div>
           <label>Email</label>
           <input
@@ -53,7 +53,7 @@ export const Login = () => {
           {errors.email && <div>{errors.email} </div>}
         </div>
         <div>
-          <label>Contraseña</label>
+          <label>Password</label>
           <input name='password'
            type='password'
             onChange={handleChange }
@@ -63,7 +63,7 @@ export const Login = () => {
 
         </div>
         <div>
-          <button type='submit'>Enviar</button>
+          <button type='submit'>Send</button>
         </div>
       </form>
 </div>

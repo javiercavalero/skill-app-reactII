@@ -21,9 +21,9 @@ alert()
   return (
     <div className='container'>
       <form onSubmit= {handleSubmit}>
-        <h1>Registro</h1>
+        <h1>Register</h1>
         <div>
-          <label>Nombre de usuario</label>
+          <label>Username</label>
           <input
             name='text'
             type='userName'
@@ -33,7 +33,7 @@ alert()
           {errors.userName && <div>{errors.userName} </div>}
         </div>
         <div>
-          <label>Contraseña</label>
+          <label>Password</label>
           <input name='password'
            type='password'
             onChange={handleChange }
@@ -53,35 +53,35 @@ alert()
         </div>
         <input type="hidden" name="teamID" value="9cdbd108-f924-4383-947d-8f0c651d0dad" />
         <div>
-          <label>Rol</label>
+          <label>Role</label>
           <select name='role' onChange={handleChange} value={ values.role }>
           <option value= "team member" >team member</option>
           <option value= "team leader" >team leader</option>
           </select>
           {errors.role && <div>{errors.role} </div>}
         </div><div>
-          <label>Continente</label>
+          <label>Continent</label>
           <select name='continent' onChange={handleChange} value={ values.continent }>
           <option value= "America" >America</option>
           <option value= "Europa" >Europa</option>
-          <option value= "Otro" >Otro</option>
+          <option value= "Otro" >Other</option>
 
           </select>
           {errors.continent && <div>{errors.continent} </div>}
         </div>
         <div>
-          <label>Región</label>
+          <label>Region</label>
           <select name='region' onChange={handleChange} value={ values.region }>
           <option value= "Latam" >Latam</option>
           <option value= "Brazil" >Brazil</option>
-          <option value= "America del norte" >America del norte</option>
-          <option value= "Otro" >Otro</option>
+          <option value= "America del norte" >North America </option>
+          <option value= "Otro" >Other</option>
 
           </select>
           {errors.region && <div>{errors.region} </div>}
         </div>
         <div>
-          <button type='submit'>Enviar</button>
+          <button type='submit'>Send</button>
         </div>
       </form>
 </div>

@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: column;
  }
- 
+
+
  #tasks .wrapper_list {
     background-color: #fafafa;
     border-radius: var(--globar-border-radius);
@@ -162,6 +163,11 @@
     cursor: pointer;
  }
  
+ @media (min-width: 900px) {
+   #tasks {
+      flex-direction: row;
+   }
+ }
  
  @media (min-width: 1300px) {
     #tasks .wrapper_list {

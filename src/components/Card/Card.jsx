@@ -1,7 +1,7 @@
 export const Card = ({data: {title, datetime, creator, description, type, priority},
 }) => (
     <div className="card">
-        <div className="close">Eliminar</div>
+        <div className="close">Delete</div>
         <h3>{title}</h3>
         <h6>{datetime}</h6>
         <h5>{creator} </h5>
