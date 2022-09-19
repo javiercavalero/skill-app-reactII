@@ -61,7 +61,8 @@ export const App = () => {
           animate="in"
           exit="out"
           variants={pageTransition} >
-          <Suspense fallback= {<>...</>}  >
+          {/* suspense se carga antes del error 404 */}
+          <Suspense fallback= { <h2>Cargando...</h2> }  >
           <Error404 />
           </Suspense>
         </motion.div>
