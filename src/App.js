@@ -1,8 +1,9 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Login } from "./components/views/Login";
+import { Login } from "./components/views/auth/Login";
 import { Tasks } from "./components/views/Tasks/Tasks";
+import { Register } from './components/views/auth/Register';
 
 import "./App.css";
 
@@ -45,6 +46,17 @@ export const App = () => {
             <Tasks />
           </motion.div>
         </RequireAuth>} />
+
+        <Route path="/register" element={
+        <motion.div className="page"
+          initial="out"
+          animate="in"
+          exit="out"
+          variants={pageTransition} >
+           <Register />
+        </motion.div>
+      } />
+
 
       <Route path="/login" element={
         <motion.div className="page"

@@ -22,6 +22,11 @@ flex-direction: column;
 padding:5px 0;
 }
 
+.auth > form > div > a{
+  text-decoration: none;
+  color:black;
+}
+
 .auth > form > div > *:not(label){
   padding: 8px 0;
 }
@@ -30,7 +35,9 @@ padding:5px 0;
   font-size: 15Spx;
 }
 
-.auth input{
+.auth input,
+.auth select
+{
   border-radius: var(--global-radius);
   border: var(--global-border);
 }
@@ -53,7 +60,11 @@ padding:5px 0;
   font-size: 16px;
   background-color:white;
 }
-
+.auth input.error,
+ .auth select.error,
+ .auth textarea.error {
+    border: 1px solid red;
+ }
 @media screen and (min-width:600px) {
   .auth{
     background-color: var( --global-bg-color-soft);
