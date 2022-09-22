@@ -4,8 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Login } from "./components/views/auth/Login";
 import { Tasks } from "./components/views/Tasks/Tasks";
 import { Register } from './components/views/auth/Register';
+import Registered from "./components/views/Registered/Registered";
 
 import "./App.css";
+
 
 //importacion dinámica
 const Error404 = lazy(() => import ("./components/views/Error404/Error404") )
@@ -64,6 +66,15 @@ export const App = () => {
           animate="in"
           exit="out"
           variants={pageTransition} > <Login />
+        </motion.div>
+      } />
+
+      <Route path="/registered/:teamID" element={
+        <motion.div className="page"
+          initial="out"
+          animate="in"
+          exit="out"
+          variants={pageTransition} > <Registered />
         </motion.div>
       } />
 
