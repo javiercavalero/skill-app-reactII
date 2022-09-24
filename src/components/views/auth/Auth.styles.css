@@ -1,78 +1,83 @@
-.auth{
+.auth {
   min-height: 100vh;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .auth > form {
-width: 100%;
-padding: 20px;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .auth > form > div {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-flex-direction: column;
-padding:5px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px 0;
 }
 
-.auth > form > div > a{
+.auth > form > div > a {
   text-decoration: none;
-  color:black;
+  color: black;
 }
 
-.auth > form > div > *:not(label){
+.auth > form > div > *:not(label) {
   padding: 8px 0;
 }
-.auth > form > div > div{
-  color: var( --global-primary-color );
+
+.auth > form > div > input,
+.auth > form > div > select {
+  padding: 8px !important;
+}
+
+.auth > form > div > div {
+  color: var(--global-primary-color);
   font-size: 15Spx;
 }
 
 .auth input,
-.auth select
-{
+.auth select {
   border-radius: var(--global-radius);
   border: var(--global-border);
 }
 
-.auth button{
+.auth button {
   transition: all 0.3s ease-out;
-  background-color: var( --global-primary-color );
+  background-color: var(--global-primary-color);
   border-radius: var(--global-radius);
-  border:0;
-  color:white;
+  border: 0;
+  color: white;
   padding: 10px !important;
   font-size: 16px;
   cursor: pointer;
 }
-.auth button:hover{
-  color: var( --global-primary-color );
+.auth button:hover {
+  color: var(--global-primary-color);
   border-radius: var(--global-radius);
-  border: 1px solid var( --global-primary-color );
+  border: 1px solid var(--global-primary-color);
   padding: 10px !important;
   font-size: 16px;
-  background-color:white;
+  background-color: white;
 }
 .auth input.error,
- .auth select.error,
- .auth textarea.error {
-    border: 1px solid red;
- }
-@media screen and (min-width:600px) {
-  .auth{
-    background-color: var( --global-bg-color-soft);
+.auth select.error,
+.auth textarea.error {
+  border: 1px solid red;
+}
+@media screen and (min-width: 600px) {
+  .auth {
+    background-color: var(--global-bg-color-soft);
   }
-  .auth > form{
+  .auth > form {
     border: var(--global-border);
     width: 400px;
     border-radius: var(--global-radius);
-    background-color: white ;
+    background-color: white;
   }
 }
