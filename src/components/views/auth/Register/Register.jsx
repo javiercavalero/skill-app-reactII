@@ -7,7 +7,7 @@ import { Switch, FormControlLabel } from "@mui/material";
 
 import "../Auth.styles.css";
 
-const { REACT_APP_API_ENDPOINT } = process.env
+const { REACT_APP_API_ENDPOINT: API_ENDPOINT} = process.env
 
 export const Register = () => {
   const [data, setData] = useState();
@@ -16,7 +16,7 @@ export const Register = () => {
 
 
   useEffect(() => {
-    fetch(`${REACT_APP_API_ENDPOINT}auth/data`)
+    fetch(`${API_ENDPOINT}auth/data`)
       .then((response) => response.json())
       .then((data) => setData(data.result));
   }, []);
@@ -52,7 +52,7 @@ export const Register = () => {
   const onSubmit = () => {
   const teamID = !values.teamID ? uuidv4() : values.teamID
 
-  fetch(`${REACT_APP_API_ENDPOINT}auth/register`, {
+  fetch(`${API_ENDPOINT}auth/register`, {
     method:"POST",
     headers:{
       "Content-Type": "application/json",
