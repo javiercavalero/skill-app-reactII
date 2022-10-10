@@ -1,7 +1,7 @@
 {
   "name": "goscrumyarn",
   "version": "0.1.0",
-  "homepage": "https://github.com/javiercavalero/skill-app-reactII",
+  "homepage": "https://javiercavalero.github.io/skill-app-reactII",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -33,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy":"npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
