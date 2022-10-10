@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/javiercavalero/skill-app-reactII/static/css/main.a1df37c3.css",
+    "main.js": "/javiercavalero/skill-app-reactII/static/js/main.b7d5bbd7.js",
+    "static/js/799.4417864a.chunk.js": "/javiercavalero/skill-app-reactII/static/js/799.4417864a.chunk.js",
+    "index.html": "/javiercavalero/skill-app-reactII/index.html",
+    "main.a1df37c3.css.map": "/javiercavalero/skill-app-reactII/static/css/main.a1df37c3.css.map",
+    "main.b7d5bbd7.js.map": "/javiercavalero/skill-app-reactII/static/js/main.b7d5bbd7.js.map",
+    "799.4417864a.chunk.js.map": "/javiercavalero/skill-app-reactII/static/js/799.4417864a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a1df37c3.css",
+    "static/js/main.b7d5bbd7.js"
+  ]
+}
