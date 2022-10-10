@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import { useNavigate, Link } from "react-router-dom";
 import * as Yup from "yup";
 
+import {swal} from "../../../../Utils/swal"
 import "../Auth.styles.css";
 
 const { REACT_APP_API_ENDPOINT: API_ENDPOINT } = process.env;
@@ -15,7 +16,7 @@ export const Login = () => {
     password: "",
   };
 
-  const required = "*Required field";
+  const required = "* Required field";
   const validationSchema = Yup.object().shape({
     userName: Yup.string()
       .min(4, "enter a minimum of 4 characters")
@@ -37,9 +38,14 @@ export const Login = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        localStorage.setItem("token", data?.result?.token)
+      .then(data => {
+        if(data.status_code === 200){
+        localStorage.setItem("token", data?.result?.token);
+        localStorage.setItem("userName", data?.result?.user.userName);
         navigate("/", { replace: true });
+        }else{
+        swal();
+        }
       });
   };
 
@@ -55,14 +61,14 @@ export const Login = () => {
         <div>
           <label>Username</label>
           <input
-            name="userName"
-            type="text"
-            className={errors.userName && touched.userName ? "error" : ""}
-            onChange={handleChange}
-            value={values.userName}
-            onBlur={handleBlur}
+           type="text"
+              name="userName"
+              onChange={handleChange}
+              value={values.userName}
+              onBlur={handleBlur}
+              className={errors.userName && touched.userName ? "error" : ""}
           />
-          {errors.userName && touched.userName && <div>{errors.userName} </div>}
+          {errors.userName && touched.userName && (<div>{errors.userName} </div>)}
         </div>
         <div>
           <label>Password</label>
@@ -80,8 +86,7 @@ export const Login = () => {
           <button type="submit">Send</button>
         </div>
         <div>
-          {" "}
-          <Link to="/register">Register</Link>{" "}
+          <Link to="/register">Register</Link>
         </div>
       </form>
     </div>

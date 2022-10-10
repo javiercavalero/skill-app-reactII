@@ -1,5 +1,7 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./TaskForm.styles.css";
 
@@ -25,7 +27,10 @@ export const TaskForm = () => {
             .then(response => response.json())
             .then((data) => {
                 resetForm()
-                alert("tarea creada")
+                toast.success("Task created", {
+                    autoClose:10000,
+                    position: toast.POSITION.TOP_CENTER}
+                )
             });
     };
 
@@ -115,6 +120,7 @@ export const TaskForm = () => {
                     <button type="submit">Create</button>
                 </div>
             </form>
+            <ToastContainer />
         </section>
     );
 };

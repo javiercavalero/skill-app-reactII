@@ -1,10 +1,12 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Login } from "./components/views/auth/Login";
+import { Login }  from "./components/views/auth/Login/Login";
 import { Tasks } from "./components/views/Tasks/Tasks";
-import { Register } from './components/views/auth/Register';
+import { Register } from './components/views/auth/Register/Register';
 import Registered from "./components/views/Registered/Registered";
+import { Donate } from "./components/views/Donate/Donate"
+
 
 import "./App.css";
 
@@ -58,6 +60,23 @@ export const App = () => {
            <Register />
         </motion.div>
       } />
+      
+       <Route
+          path="/donate"
+          element={
+            <RequireAuth>
+              <motion.div
+                className="page"
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={pageTransition}
+              >
+                <Donate />
+              </motion.div>
+            </RequireAuth>
+          }
+        />
 
 
       <Route path="/login" element={

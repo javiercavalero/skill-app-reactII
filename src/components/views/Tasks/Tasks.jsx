@@ -1,79 +1,167 @@
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { Radio, RadioGroup, FormControl, FormControlLabel, } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux"
+import debounce from "lodash.debounce";
+import { useState, useEffect } from "react";
 import "./Tasks.styles.css";
-import {useResize} from '../../../hooks/useResize.js';
+import { getTasks, deleteTask, editTaskStatus } from "../../../store/actions/tasksActions"
+import { useResize } from "../../../hooks/useResize.js";
 import { Header } from "../../Header/Header";
 import { TaskForm } from "../../TaskForm/TaskForm";
 import { Card } from "../../Card/Card";
-import { cardsData } from "./data";
 
 export const Tasks = () => {
-    
-    const {isPhone} = useResize();
+  const [list, setList] = useState(null);
 
-    const limitString = (str) => {
-        if (str.length > 200)
-            return { string: str.slice(0, 197).concat("..."), addButton: true }
-        return { string: str, addButton: false }
+  const [renderList, setRenderList] = useState(null);
+
+  const [tasksFromWho, setTasksFromWho] = useState("ALL");
+
+  const [search, setSearch] = useState("");
+
+  const { isPhone } = useResize();
+
+  const dispatch = useDispatch();
+
+ const { loading, error, tasks } = useSelector(state => {
+    return state.tasksReducer
+  } ) 
+  
+  useEffect(() => {
+    dispatch(getTasks(tasksFromWho === "ME" ? "/me" : ""))
+  }, [tasksFromWho]);
+
+ 
+  
+useEffect(() => {
+
+  if(tasks?.length){
+    setList(tasks)
+    setRenderList(tasks)
+  }
+}, [tasks])
+
+  useEffect(() => {
+   if(search)
+    setRenderList(
+      list.filter((data) => data.title.startsWith(search)))
+   else setRenderList(list)
+  }, [search]);
+
+
+  const renderAllCards = () => {
+    return renderList?.map((data) => <Card key={data._id} data={data} deleteCard={handleDelete}
+    editCardStatus = {handleEditCardStatus} />);
+  };
+
+  const renderColumnCards = text => {
+    return renderList
+      ?.filter((data) => data.status === text )
+      .map((data) => <Card key={data._id} data={data} deleteCard={handleDelete} 
+      editCardStatus = {handleEditCardStatus} />);
+  };
+  
+
+  const handleChangeImportance = (e) => {
+    if (e.currentTarget.value === "ALL"){
+       setRenderList(list) }
+    else{
+      setRenderList(list.filter((data) => data.importance === e.currentTarget.value))
     }
+  }
 
-const renderAllCards = () => {
-    return cardsData.map( data => <Card key={data.id} data={data} /> )
-}
-    return (
-        <>
-            <Header />
-            <main id="tasks">
-            <TaskForm/>
-                <section className="wrapper_list">
-                    <div className="list_header">
-                        <h2>My tasks</h2>
-                    </div>
-                    {isPhone ? (<div className="list phone">
-                       {renderAllCards()}
-                    </div>) : (<div className="list_group">
-                        <div className="list">
-                            <h4>New</h4>
-                            <div className="card">
-                                <div className="close">Delete</div>
-                                <h3>Task 1</h3>
-                                <h6>18/0/2022 23:06hs</h6>
-                                <h5>Javier Cavalero</h5>
-                                <button type="button">New</button>
-                                <button type="button">High</button>
-                                <p>{limitString(`Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem ex, voluptas quibusdam culpa molestias, architecto ratione minima labore, officia reiciendis odio. Nam placeat optio repellat totam deserunt doloribus asperiores odio!
-                                Vitae laudantium minus iure dicta libero, magni dolore dolores repudiandae assumenda,
-                                 eos eum consequuntur at placeat ipsam numquam. Assumenda unde officiis sunt provident
-                                  corrupti explicabo qui error aperiam deleniti mollitia.`).string} </p>
-                            </div>
-                        </div>
-                        <div className="list">
-                            <h4>In process</h4>
-                            <div className="card">
-                                <div className="close">Delete</div>
-                                <h3>Task 1</h3>
-                                <h6>18/0/2022 23:06hs</h6>
-                                <h5>Javier Cavalero</h5>
-                                <button type="button">New</button>
-                                <button type="button">High</button>
-                                <p>lorem</p>
-                            </div>
-                        </div>
-                        <div className="list">
-                            <h4>Finished</h4>
-                            <div className="card">
-                                <div className="close">Delete</div>
-                                <h3>Task 1</h3>
-                                <h6>18/0/2022 23:06hs</h6>
-                                <h5>Javier Cavalero</h5>
-                                <button type="button">New</button>
-                                <button type="button">High</button>
-                                <p>lorem</p>
-                            </div>
-                        </div>
-                    </div>
-                    )}
+  const handleSearch = debounce( e => {setSearch(e?.target?.value)
+  }, 1000)
 
-                </section>
-            </main>
-        </>
-    )
-}
+
+  const handleDelete = id => dispatch(deleteTask(id))
+
+ const handleEditCardStatus = data => dispatch(editTaskStatus(data))
+
+  if (error) return <div>Hubo un error</div>
+
+
+  return (
+    <>
+      <Header />
+      <main id="tasks">
+        <TaskForm />
+        <section className="wrapper_list">
+          <div className="list_header">
+            <h2>My tasks</h2>
+          </div>
+          <div className="filters">
+            <FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                onChange={ (e) => setTasksFromWho(e.currentTarget.value) }
+              >
+                <FormControlLabel
+                  value="ALL"
+                  control={<Radio />}
+                  label="Alls"
+                />
+                <FormControlLabel
+                  value="ME"
+                  control={<Radio />}
+                  label="My tasks"
+                />
+              </RadioGroup>
+            </FormControl>
+            <div className="search">
+              <input type="text" 
+              placeholder="Buscar por título..."
+              onChange={handleSearch} />
+            </div>
+            <select name="importance" onChange={handleChangeImportance}>
+              <option value="">Select priority</option>
+              <option value="ALL">Alls</option>
+              <option value="LOW">Low</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="HIGH">High</option>
+            </select>
+          </div>
+
+          {isPhone ? (
+            !renderList?.length ? (
+              <div>No tasks have been created</div>
+            ) : loading ? (
+              <>
+                <Skeleton height={90} />
+                <Skeleton height={90} />
+                <Skeleton height={90} />
+              </>
+            ) : (
+              <div className="list phone">{renderAllCards()}</div>
+            )
+          ) : (
+            <div className="list_group">
+              {!renderList?.length ? (
+                <div>No hay tareas aún</div>
+              ) : loading ? (
+                <Skeleton />
+              ) : (
+                <>
+                  <div className="list">
+                    <h4>New</h4>
+                    {renderColumnCards("NEW")}
+                  </div>
+                  <div className="list">
+                    <h4>In process</h4>
+                    {renderColumnCards("IN PROGRESS")}
+                  </div>
+                  <div className="list">
+                    <h4>Finished</h4>
+                    {renderColumnCards("FINISHED")}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </section>
+      </main>
+    </>
+  );
+};
