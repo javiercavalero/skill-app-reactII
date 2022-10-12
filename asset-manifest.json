@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/skill-app-reactII/static/css/main.a1df37c3.css",
-    "main.js": "/skill-app-reactII/static/js/main.8575e778.js",
+    "main.js": "/skill-app-reactII/static/js/main.a66fbec8.js",
     "static/js/799.4417864a.chunk.js": "/skill-app-reactII/static/js/799.4417864a.chunk.js",
+    "static/media/Go_Scrum.png": "/skill-app-reactII/static/media/Go_Scrum.29fd9ff190f37ed93177.png",
     "index.html": "/skill-app-reactII/index.html",
     "main.a1df37c3.css.map": "/skill-app-reactII/static/css/main.a1df37c3.css.map",
-    "main.8575e778.js.map": "/skill-app-reactII/static/js/main.8575e778.js.map",
+    "main.a66fbec8.js.map": "/skill-app-reactII/static/js/main.a66fbec8.js.map",
     "799.4417864a.chunk.js.map": "/skill-app-reactII/static/js/799.4417864a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a1df37c3.css",
-    "static/js/main.8575e778.js"
+    "static/js/main.a66fbec8.js"
   ]
 }
