@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/skill-app-reactII/static/css/main.d72f9ca6.css",
-    "main.js": "/skill-app-reactII/static/js/main.2903a041.js",
+    "main.css": "/skill-app-reactII/static/css/main.d8346ced.css",
+    "main.js": "/skill-app-reactII/static/js/main.3e41f048.js",
     "static/js/799.4417864a.chunk.js": "/skill-app-reactII/static/js/799.4417864a.chunk.js",
     "static/media/Go_Scrum.png": "/skill-app-reactII/static/media/Go_Scrum.29fd9ff190f37ed93177.png",
     "index.html": "/skill-app-reactII/index.html",
-    "main.d72f9ca6.css.map": "/skill-app-reactII/static/css/main.d72f9ca6.css.map",
-    "main.2903a041.js.map": "/skill-app-reactII/static/js/main.2903a041.js.map",
+    "main.d8346ced.css.map": "/skill-app-reactII/static/css/main.d8346ced.css.map",
+    "main.3e41f048.js.map": "/skill-app-reactII/static/js/main.3e41f048.js.map",
     "799.4417864a.chunk.js.map": "/skill-app-reactII/static/js/799.4417864a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d72f9ca6.css",
-    "static/js/main.2903a041.js"
+    "static/css/main.d8346ced.css",
+    "static/js/main.3e41f048.js"
   ]
 }
